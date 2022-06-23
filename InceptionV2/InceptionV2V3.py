@@ -12,10 +12,7 @@ class InceptionV2V3:
     def __init__(self):
         
         """
-        The inception framework to implement the inception network v2
-        from the original paper - 
-        Rethinking the Inception Architecture for Computer Vision
-        @ https://arxiv.org/abs/1512.00567
+        
         
         """
         
@@ -25,18 +22,7 @@ class InceptionV2V3:
     def __conv2d_bn(self, inp, filters, kernel_size, padding='same', strides=(1, 1), name=None):
         
         """
-        Utility function to apply convolution operation 
-        followed by batch normalization.
-
-        Arguments:
-            inp: input tensor.
-            filters: number of filters for the convolution operation.
-            kernel_size: size of the convolving kernel. Tuple of (height, width)
-            padding: padding mode in `Conv2D`. Default is 'same'.
-            strides: strides in `Conv2D`. Default is (1, 1).
-                
-        Return:
-            out_tensor: Output tensor after the Convolution and BatchNormalization.
+        
         """
         
         if name is not None:
@@ -63,30 +49,7 @@ class InceptionV2V3:
     def __InceptionFigure5(self, in_layer, f1x1, f3x3_red, f3x3, f5x5_red, f5_3x3, fpool, name=None):
         
         """
-        Constructs the Indeption Block as shows in
-        Figure 5 in the original paper @
-        https://arxiv.org/pdf/1512.00567.pdf
         
-        The 5x5 convolution in InceptionV2 was replaced by 2 stacked 3x3 convolutions.
-        This architectural modification by factorization resulted in computation cost 
-        reduction with a relative gain of ~28%. 
-        
-        From the paper: "For the Inception part of the network, we have 3 traditional
-        inception modules at the 35×35 with 288 filters each." 
-        
-        Parameters:
-            in_layer: the input layer.
-            f1x1: number of filters for the 1x1 convolutions
-            f3x3_red: number of filters for the 1x1 convolutions that 
-                      reduce the parameters befor applying the 3x3 convolutions.
-            f3x3: number of filters for the 3x3 convolutions
-            f5x5_red: number of filters for the 1x1 convolutions that 
-                      reduce the parameters befor applying the 3x3 double convolutions.
-            f5_3x3: number of filters for the 2 stacked 3x3 convolutions
-            fpool: number of filters for the pooling layer.
-        
-        Return:
-            out_layer: the inception block.
         
         """
         
@@ -115,8 +78,6 @@ class InceptionV2V3:
     def GetInceptionNetOnFigure5(self):
         
         """
-        Creates and returns a sample model based on 
-        figure 5 in the InceptionV3 paper.
         
         """
         inp = layers.Input(shape=(299, 299, 3))
